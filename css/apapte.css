@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+}
+@media screen and (max-width: 200px) {
+    .container {
+        display: none;
+    }
+    body::after {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "屏幕过小，无法展示网页内容";
+    }
+}
