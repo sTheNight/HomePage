@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 body {
@@ -11,6 +11,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 50%;
+    overflow-y: scroll;
 }
 
 .container {
@@ -34,6 +35,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.1);
     background: url("https://avatars.githubusercontent.com/u/85998341?v=4");
     background-size: cover;
+    cursor: pointer;
     transition: all 0.3s, box-shadow 0.75s;
 }
 
@@ -56,18 +58,23 @@ body {
     text-align: center;
 }
 
+
+.line {
+    height: 1px;
+    width: 20rem;
+    background-color: rgba(96, 96, 96, 0.75);
+}
+
+#name,.content {
+    cursor: default;
+}
+
 .social-media {
     padding-top: 16px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-}
-
-.line {
-    height: 1px;
-    width: 20rem;
-    background-color: rgba(96, 96, 96, 0.75);
 }
 
 .social-button {
@@ -91,6 +98,7 @@ body {
 .social-button:focus {
     background-color: rgba(255, 255, 255, 0.25);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
 }
 
 .nav {
