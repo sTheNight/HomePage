@@ -37,11 +37,12 @@ body {
     background-size: cover;
     cursor: pointer;
     transition: all 0.3s, box-shadow 0.75s;
-}
 
-.avatar:hover {
-    transform: scale(1.05);
-    box-shadow: 1px 1px 25px rgba(255, 255, 255, 0.4);
+    :hover {
+        transform: scale(1.05);
+        box-shadow: 1px 1px 25px rgba(255, 255, 255, 0.4);
+    }
+
 }
 
 #name {
@@ -50,12 +51,14 @@ body {
     margin: 16px 8px 0px;
     font-size: 20px;
     text-align: center;
+    cursor: default;
 }
 
 .content {
     max-width: 24rem;
     margin: 16px 8px 24px;
     text-align: center;
+    cursor: default;
 }
 
 
@@ -63,10 +66,6 @@ body {
     height: 1px;
     width: 20rem;
     background-color: rgba(96, 96, 96, 0.75);
-}
-
-#name,.content {
-    cursor: default;
 }
 
 .social-media {
@@ -92,13 +91,13 @@ body {
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-}
 
-.social-button:hover,
-.social-button:focus {
-    background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-    transform: scale(1.05);
+    :focus,:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+    }
+
 }
 
 .nav {
