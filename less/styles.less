@@ -1,5 +1,6 @@
 @normal-padding: 16px;
 @normal-blur-redius: 16px;
+@max-content-width: 24rem;
 
 * {
     margin: 0;
@@ -10,7 +11,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: url(../img/background.png);
+    background: url(../../img/background.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -63,7 +64,7 @@ body {
 }
 
 .content {
-    max-width: 24rem;
+    max-width: @max-content-width;
     margin: 16px 8px 24px;
     text-align: center;
     cursor: default;
@@ -71,7 +72,7 @@ body {
 
 .line {
     height: 1px;
-    width: 20rem;
+    width: calc(@max-content-width - 4rem);
     background-color: rgba(96, 96, 96, 0.75);
 }
 
@@ -81,6 +82,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    max-width: @max-content-width;
 }
 
 .social-button {
