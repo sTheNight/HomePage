@@ -1,3 +1,6 @@
+@normal-padding: 16px;
+@normal-blur-redius: 16px;
+
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +34,7 @@ body {
 .avatar {
     width: 150px;
     height: 150px;
-    border-radius: 75px;
+    border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.1);
     background: url("https://avatars.githubusercontent.com/u/85998341?v=4");
     background-size: cover;
@@ -41,6 +44,11 @@ body {
     &:hover {
         transform: scale(1.05);
         box-shadow: 1px 1px 25px rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 992px) {
+        width: 120px;
+        height: 120px;
     }
 
 }
@@ -61,7 +69,6 @@ body {
     cursor: default;
 }
 
-
 .line {
     height: 1px;
     width: 20rem;
@@ -69,7 +76,7 @@ body {
 }
 
 .social-media {
-    padding-top: 16px;
+    padding-top: @normal-padding;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -82,7 +89,7 @@ body {
     margin: 8px;
     outline: 0;
     border-radius: 50%;
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(@normal-blur-redius);
     background-color: rgba(255, 255, 255, 0.05);
     transition: all 0.3s;
     display: inline-flex;
@@ -92,7 +99,8 @@ body {
     cursor: pointer;
     text-decoration: none;
 
-    &:focus,&:hover {
+    &:focus,
+    &:hover {
         background-color: rgba(255, 255, 255, 0.25);
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
         transform: scale(1.05);
@@ -100,15 +108,30 @@ body {
 
 }
 
+@media screen and (max-width: 200px) {
+    .container {
+        display: none;
+    }
+    body::after {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "屏幕过小，无法展示网页内容";
+    }
+}
+
+// Nav 没写完
 .nav {
-    padding: 16px;
+    padding: @normal-padding;
     max-width: 36rem;
     box-sizing: border-box;
     display: grid;
 }
 
 .nav-card {
-    padding: 16px;
+    padding: @normal-padding;
     border-radius: 20px;
     backdrop-filter: blur(32px);
     cursor: pointer;
