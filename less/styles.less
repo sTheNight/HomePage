@@ -1,140 +1,132 @@
 @normal-padding: 16px;
-@normal-blur-redius: 16px;
+@normal-blur-radius: 16px;
 @max-content-width: 24rem;
+@mobile-breakpoint: 992px;
+@white-85: rgba(255,255,255,0.85);
+@black-40: rgba(0,0,0,0.4);
+@transition-duration: 0.3s;
+
+.flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blur-background(@radius: @normal-blur-radius) {
+  backdrop-filter: blur(@radius);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-breakpoint(@rules) {
+  @media (max-width: @mobile-breakpoint) {
+    @rules();
+  }
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  padding: 0;
+  color: @white-85;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    background: url(../../img/background.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: 50% 50%;
-    overflow-y: scroll;
+  width: 100vw;
+  height: 100vh;
+  background: url(../../img/background.png) center/cover fixed;
+  overflow-y: scroll;
+
+  &::after when (@mobile-breakpoint < 200px) {
+    content: "屏幕过小，无法展示网页内容";
+    .flex-center();
+    padding: 10px;
+    height: 100%;
+  }
 }
 
 .container {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #fff;
-    align-items: center;
-    overflow-y: scroll;
-    overflow-x: visible;
+  .flex-center();
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: @black-40;
+  box-sizing: border-box;
+  overflow: visible scroll;
+
+  .mobile-breakpoint({
+    display: none;
+  });
 }
 
 .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    background: url("https://avatars.githubusercontent.com/u/85998341?v=4");
-    background-size: cover;
-    cursor: pointer;
-    transition: all 0.3s, box-shadow 0.75s;
+  @size: 150px;
+  width: @size;
+  height: @size;
+  border: 2px solid fade(@white-85, 10%);
+  border-radius: 50%;
+  background: url("https://avatars.githubusercontent.com/u/85998341?v=4") center/cover;
+  cursor: pointer;
+  transition: all @transition-duration, box-shadow (@transition-duration * 2.5);
 
-    &:hover {
-        transform: scale(1.05);
-        box-shadow: 1px 1px 25px rgba(255, 255, 255, 0.4);
-    }
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 25px fade(@white-85, 40%);
+  }
 
-    @media (max-width: 992px) {
-        width: 120px;
-        height: 120px;
-    }
-
+  .mobile-breakpoint({
+    width: @size * 0.8;
+    height: @size * 0.8;
+  });
 }
 
 #name {
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    margin: 16px 8px 0px;
-    font-size: 20px;
-    text-align: center;
-    cursor: default;
+  font: 600 20px/1.5 sans-serif;
+  letter-spacing: 0.1em;
+  margin: @normal-padding 8px 0;
+  text-align: center;
+  cursor: default;
 }
 
 .content {
-    max-width: @max-content-width;
-    margin: 16px 8px 24px;
-    text-align: center;
-    cursor: default;
+  max-width: @max-content-width;
+  margin: @normal-padding 8px (@normal-padding * 1.5);
+  text-align: center;
+  cursor: default;
 }
 
 .line {
-    height: 1px;
-    width: calc(@max-content-width - 4rem);
-    background-color: rgba(96, 96, 96, 0.75);
+  height: 1px;
+  width: calc(@max-content-width - 4rem);
+  background-color: fade(rgb(96, 96, 96), 75%);
 }
 
 .social-media {
-    padding-top: @normal-padding;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    max-width: @max-content-width;
-}
+  padding-top: @normal-padding;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: @max-content-width;
+  .flex-center();
 
-.social-button {
+  .social-button {
+    .blur-background();
+    .flex-center();
     width: 48px;
     height: 48px;
     margin: 8px;
-    outline: 0;
     border-radius: 50%;
-    backdrop-filter: blur(@normal-blur-redius);
-    background-color: rgba(255, 255, 255, 0.05);
-    transition: all 0.3s;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
+    transition: all @transition-duration;
     text-decoration: none;
 
     &:focus,
     &:hover {
-        background-color: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-        transform: scale(1.05);
+      background-color: fade(white, 25%);
+      box-shadow: 0 0 20px fade(white, 15%);
+      transform: scale(1.05);
     }
-
+  }
 }
 
 @media screen and (max-width: 200px) {
-    .container {
-        display: none;
-    }
-    body::after {
-        padding: 10px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        content: "屏幕过小，无法展示网页内容";
-    }
-}
-
-// Nav 没写完
-.nav {
-    padding: @normal-padding;
-    max-width: 36rem;
-    box-sizing: border-box;
-    display: grid;
-}
-
-.nav-card {
-    padding: @normal-padding;
-    border-radius: 20px;
-    backdrop-filter: blur(32px);
-    cursor: pointer;
+  .container {
+    display: none;
+  }
 }
