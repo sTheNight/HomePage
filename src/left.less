@@ -1,0 +1,35 @@
+@desktop-avatar-width: 120px;
+
+.avatar {
+    width: @desktop-avatar-width;
+    height: @desktop-avatar-width;
+    border-radius: 50%;
+    border: 1px solid;
+    color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover,&:focus {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        // border-radius: 35%;
+    }
+}
+
+#name {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    user-select: none;
+}
+#Hitokoto {
+    margin-top: 8px;
+    user-select: none;
+}
+
+.contact {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
