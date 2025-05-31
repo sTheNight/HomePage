@@ -10,4 +10,7 @@ async function fetchHitokoto() {
 
 document.addEventListener('DOMContentLoaded',()=> {
     fetchHitokoto();
+    document.querySelector('.avatar').addEventListener('click',()=>{
+      location.href = 'https://www.github.com/sTheNight'
+    })
 })
