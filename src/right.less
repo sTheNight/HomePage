@@ -1,5 +1,40 @@
+@mobile-rule: (max-width: 996px);
+@desktop-rule: (min-width: 997px);
+
 // 此处专为页面导航栏目预留
 
-.right-div {
-    display: none;
+.nav-card-div {
+    box-sizing: border-box;
+    user-select: none;
+    padding: 16px;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all .2s;
+
+    i.fa-solid.fa-link {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    &:hover,
+    &:focus {
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        transform: scale(1.02);
+    }
+}
+
+.nav-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media @mobile-rule {
+        width: 100%!important;
+    }
 }

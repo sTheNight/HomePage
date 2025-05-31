@@ -1,10 +1,12 @@
 @mobile-rule: (max-width: 996px);
 @desktop-rule: (min-width: 997px);
-@universe-div-margin: 48px;
+@universe-div-margin: 128px;
+@universe-mobile-div-margin: 32px;
 
 * {
   margin: 0;
   padding: 0;
+  // 全局默认字体颜色
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -22,7 +24,9 @@ body {
   width: 100vw;
   box-sizing: border-box;
   position: relative;
-  background-color: #0000004d;
+  // 背景遮罩
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
 
   @media @mobile-rule {
     align-items: flex-start;
@@ -34,31 +38,39 @@ body {
 
 .left-div {
   box-sizing: border-box;
-  margin-left: @universe-div-margin;
 
   @media @mobile-rule {
-    margin-right: @universe-div-margin;
+    margin: 0 @universe-mobile-div-margin;
     max-width: 100%;
   }
-
+  
   @media @desktop-rule {
+    margin-left: @universe-div-margin;
     width: 50%;
   }
 }
 
 .right-div {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: absolute;
-  right: 0%;
-  margin-right: @universe-div-margin;
-
+  overflow-y: auto;
+  
   @media @desktop-rule {
+    align-items: flex-end;
+    position: absolute;
+    right: 0%;
+    max-height: 60%;
     width: 50%;
+    margin-right: @universe-div-margin
   }
 
   @media @mobile-rule {
-    width: 100%;
+    margin: 16px @universe-mobile-div-margin;
+    max-height: 40%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
