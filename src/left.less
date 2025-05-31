@@ -1,8 +1,9 @@
 @desktop-avatar-width: 120px;
+@mobile-avatar-width: 100px;
 @normal-blur-redius: 16px;
 @mobile-rule: (max-width: 996px);
 @desktop-rule: (min-width: 997px);
-@contack-div-width: 80%;
+@contact-div-width: 40%;
 
 .left-formatting-corrections {
     // 文字排版修正
@@ -31,6 +32,11 @@
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         border-radius: 35%;
     }
+
+    @media @mobile-rule {
+        width: @mobile-avatar-width;
+        height: @mobile-avatar-width;
+    }
 }
 
 #name {
@@ -54,7 +60,7 @@
     flex-wrap: wrap;
 
     @media @desktop-rule {
-        max-width: @contack-div-width;
+        max-width: @contact-div-width;
     }
 }
 
@@ -84,8 +90,11 @@
 
 .divider {
     height: 1px;
-    width: @contack-div-width;
     background-color: rgba(96, 96, 96, 0.75);
     transform: translate(10px, 0);
     margin-top: 16px;
+
+    @media @desktop-rule {
+        width: @contact-div-width;
+    }
 }

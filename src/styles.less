@@ -38,26 +38,27 @@ body {
 
   @media @mobile-rule {
     margin-right: @universe-div-margin;
+    max-width: 100%;
   }
 
   @media @desktop-rule {
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 .right-div {
-  box-sizing: border-box;
-
-  @media @mobile-rule {
-    margin-left: @universe-div-margin;
-    height: 100vh;
-    width: 100vw;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  right: 0%;
+  margin-right: @universe-div-margin;
 
   @media @desktop-rule {
-    position: absolute;
-    right: 0%;
-    margin-right: @universe-div-margin;
-    max-width: 50%;
+    width: 50%;
+  }
+
+  @media @mobile-rule {
+    width: 100%;
   }
 }
