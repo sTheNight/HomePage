@@ -26,6 +26,7 @@ body {
   position: relative;
   // 背景遮罩
   background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
 
   @media @mobile-rule {
     align-items: flex-start;
@@ -37,7 +38,7 @@ body {
 
 .left-div {
   box-sizing: border-box;
-  
+
   @media @mobile-rule {
     margin: 0 @universe-mobile-div-margin;
     max-width: 100%;
@@ -50,18 +51,26 @@ body {
 }
 
 .right-div {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: absolute;
-  right: 0%;
-
+  overflow-y: auto;
+  
   @media @desktop-rule {
+    align-items: flex-end;
+    position: absolute;
+    right: 0%;
+    max-height: 60%;
     width: 50%;
     margin-right: @universe-div-margin
   }
 
   @media @mobile-rule {
-    width: 100%;
+    margin: 16px @universe-mobile-div-margin;
+    max-height: 40%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
