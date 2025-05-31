@@ -1,0 +1,64 @@
+@mobile-rule: (max-width: 996px);
+@desktop-rule: (min-width: 997px);
+@universe-div-margin: 48px;
+
+* {
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body {
+  background: url(../background.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #0000004d;
+
+  @media @mobile-rule {
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+}
+
+.left-div {
+  box-sizing: border-box;
+  margin-left: @universe-div-margin;
+
+  @media @mobile-rule {
+    margin-right: @universe-div-margin;
+    max-width: 100%;
+  }
+
+  @media @desktop-rule {
+    width: 50%;
+  }
+}
+
+.right-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  right: 0%;
+  margin-right: @universe-div-margin;
+
+  @media @desktop-rule {
+    width: 50%;
+  }
+
+  @media @mobile-rule {
+    width: 100%;
+  }
+}
