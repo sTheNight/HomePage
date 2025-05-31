@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Nav 卡片点击事件
   document.querySelector('.nav-group').addEventListener('click', (e) => {
     switch (e.target.dataset.id) {
-      case 'HelloWorld':
-        console.log('nav card clicked')
+      case 'thispage':
+        location.href = 'https://github.com/sTheNight/HomePage'
         break;
       default:
         break;
@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.addEventListener('resize', () => { calcNavGroupWidth() })
-
+// 宽度计算器逻辑待修改
+// 预计将改为索引出宽度最大的卡片用于计算整个group的宽度
+// 亦或是将 navGroup 改为瀑布流布局
 function calcNavGroupWidth() {
   console.log('resizing card group width...')
   const cardWidth = document.querySelector('.nav-card-div').offsetWidth;
