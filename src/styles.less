@@ -17,6 +17,14 @@ body {
   background-position: 50% 50%;
 }
 
+.background-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  backdrop-filter: blur(4px);
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -26,7 +34,6 @@ body {
   position: relative;
   // 背景遮罩
   background-color: rgba(0,0,0,0.4);
-  backdrop-filter: blur(4px);
 
   @media @mobile-rule {
     align-items: flex-start;

@@ -1,6 +1,6 @@
 ## 重铬酸钠的个人主页
 
-个人 HTMML + CSS + JavaScript 学习成果之一，~~还很菜请见谅~~
+个人 HTML + CSS + JavaScript 学习成果之一，~~还很菜请见谅~~
 
 ## 打包方式
 
