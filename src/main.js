@@ -1,8 +1,6 @@
 import './styles.less'
 import './left.less'
 import './right.less'
-import  './alertDialog.less'
-import { showAlertDialog,closeAlertDialog } from './showAlertDialog'
 
 async function fetchHitokoto() {
   const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'sfscn-translation':
         location.href = 'https://github.com/sTheNight/Spaceflight-Simulator-CNlang'
       default:
-        showAlertDialog(1,1,1);
+        alert('未定义的事件')
         break;
     }
   })
@@ -33,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('resize', () => { calcNavGroupWidth() })
 function calcNavGroupWidth() {
-  console.log('resizing card group width...')
   const cardWidth = document.querySelector('.nav-card-div').offsetWidth;
   document.querySelector(".nav-group").style.maxWidth = `${(cardWidth * 3)}px`
 }
