@@ -15,25 +15,27 @@
     // 头像排版位置修正
     transform: translate(8px, 0);
 
+    // 盒模型处理
     width: @desktop-avatar-width;
     height: @desktop-avatar-width;
     border-radius: 50%;
     border: 1px solid;
-    color: rgba(255, 255, 255, 0.25);
+
+    // 交互与样式处理
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     transition: all .3s;
+    color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     outline: 0;
     background: url("https://avatars.githubusercontent.com/u/85998341?v=4");
     background-size: cover;
-
     &:hover,
     &:focus {
         transform: translate(8px, 0) scale(1.1);
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
         border-radius: 35%;
     }
-
+    // 移动端适配
     @media @mobile-rule {
         width: @mobile-avatar-width;
         height: @mobile-avatar-width;
@@ -66,11 +68,15 @@
 }
 
 .social-button {
+    // 盒模型处理
     width: 48px;
     height: 48px;
     margin: 8px;
-    outline: 0;
     border-radius: 50%;
+    outline: 0;
+    box-sizing: border-box;
+
+    // 交互与样式处理
     backdrop-filter: blur(@normal-blur-redius);
     background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.3s;
@@ -80,7 +86,6 @@
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-
     &:focus,
     &:hover {
         border-radius: 35%;

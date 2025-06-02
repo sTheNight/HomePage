@@ -2,10 +2,9 @@ import './styles.less'
 import './left.less'
 import './right.less'
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  fetchHitokoto()
   calcNavGroupWidth()
+  fetchHitokoto()
   bindNavcardEvent()
   document.querySelector('.avatar').addEventListener('click', () => {
     location.href = 'https://www.github.com/sTheNight'

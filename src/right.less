@@ -2,24 +2,32 @@
 @desktop-rule: (min-width: 997px);
 
 .nav-card-div {
+    // 盒模型处理
     box-sizing: border-box;
-    user-select: none;
     padding: 16px;
-    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px;
+    max-width: 300px;
+
+    // 内容溢出处理
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    // 交互与效果处理
+    user-select: none;
+    backdrop-filter: blur(16px);
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     cursor: pointer;
-    margin: 10px;
-    max-width: 80%;
     transition: all .2s;
 
+    // 图表样式调整
     .fa-solid,
     .fa-brands {
         font-size: 14px;
         margin-right: 8px;
     }
-
     &:hover,
     &:focus {
         border-radius: 8px;
