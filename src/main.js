@@ -1,11 +1,13 @@
 import './styles.less'
 import './left.less'
 import './right.less'
+import config from './config.js'
 
 document.addEventListener('DOMContentLoaded', () => {
+  fillBasicInfo();
+  generateSocialButton()
+  generateNavCard()
   calcNavGroupWidth()
-  fetchHitokoto()
-  bindNavcardEvent()
   document.querySelector('.avatar').addEventListener('click', () => {
     location.href = 'https://www.github.com/sTheNight'
   })
@@ -21,24 +23,42 @@ function calcNavGroupWidth() {
 async function fetchHitokoto() {
   const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')
   const { hitokoto: hitokotoText } = await response.json()
-  document.querySelector("#Hitokoto").innerHTML = hitokotoText
+  return hitokotoText
 }
 
-function bindNavcardEvent() {
-  const navCards = document.querySelectorAll('.nav-card-div');
-  navCards.forEach((item) => {
-    item.addEventListener('click', () => {
-      switch (item.dataset.id) {
-        case 'sfscn-translation':
-          location.href = 'https://github.com/sTheNight/Spaceflight-Simulator-CNlang'
-          break
-        case 'home-page-proj':
-          location.href = 'https://github.com/sTheNight/HomePage'
-          break;
-        default:
-          console.log('https://github.com/sTheNight/HomePage')
-          break;
-      }
-    })
+function generateSocialButton() {
+  const { socialLinks } = config
+  const contactDiv = document.querySelector('.contact')
+  socialLinks.forEach(item => {
+    const btn = document.createElement('a')
+    btn.className = 'social-button'
+    btn.href = item.link
+    btn.innerHTML = item.customIcon ? item.icon : `<i class="${item.icon}"></i>`
+    contactDiv.appendChild(btn)
   })
+}
+
+function generateNavCard() {
+  const { navItems } = config
+  const navGroupEle = document.querySelector('.nav-group')
+  navItems.forEach(item => {
+    const newNavCard = document.createElement('div')
+    newNavCard.classList.add('nav-card-div')
+    newNavCard.innerHTML = `<i class="fa-solid fa-link"></i>${item.name}`
+    newNavCard.addEventListener('click',()=>{
+      location.href = item.link
+    })
+    navGroupEle.appendChild(newNavCard)
+  })
+}
+
+async function fillBasicInfo() {
+  const { author, hitokoto, avatar } = config
+  const authorNameEle = document.querySelector('#name')
+  const hitokotoEle = document.querySelector('#Hitokoto')
+  const avatarEle = document.querySelector('.avatar')
+
+  authorNameEle.innerText = author
+  hitokotoEle.innerText = hitokoto == '#HitokotoEnable#' ? await fetchHitokoto() : hitokoto
+  avatarEle.style.backgroundImage = `url("${avatar}")`;
 }

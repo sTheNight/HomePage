@@ -11,6 +11,10 @@ npm install
 npm run build
 ```
 
+## 未来计划
+
+使用 Vue + TypeScript 重写
+
 ## License
 
 [MIT License](/LICENSE)
