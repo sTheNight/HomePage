@@ -6,8 +6,8 @@ import config from './config.js'
 document.addEventListener('DOMContentLoaded', () => {
   fillBasicInfo();
   generateSocialButton()
+  generateNavCard()
   calcNavGroupWidth()
-  bindNavcardEvent()
   document.querySelector('.avatar').addEventListener('click', () => {
     location.href = 'https://www.github.com/sTheNight'
   })
@@ -26,26 +26,6 @@ async function fetchHitokoto() {
   return hitokotoText
 }
 
-function bindNavcardEvent() {
-  const navCards = document.querySelectorAll('.nav-card-div');
-  navCards.forEach((item) => {
-    item.addEventListener('click', () => {
-      switch (item.dataset.id) {
-        case 'sfscn-translation':
-          location.href = 'https://github.com/sTheNight/Spaceflight-Simulator-CNlang'
-          break
-        case 'home-page-proj':
-          location.href = 'https://github.com/sTheNight/HomePage'
-          break;
-        default:
-          console.log('https://github.com/sTheNight/HomePage')
-          break;
-      }
-    })
-  })
-}
-//<a class="social-button" href="https://t.me/SodiumDichromate" target="_blank"><i
-//  class="fa-brands fa-telegram"></i></a>
 function generateSocialButton() {
   const { socialLinks } = config
   const contactDiv = document.querySelector('.contact')
@@ -58,8 +38,22 @@ function generateSocialButton() {
   })
 }
 
+function generateNavCard() {
+  const { navItems } = config
+  const navGroupEle = document.querySelector('.nav-group')
+  navItems.forEach(item => {
+    const newNavCard = document.createElement('div')
+    newNavCard.classList.add('nav-card-div')
+    newNavCard.innerHTML = `<i class="fa-solid fa-link"></i>${item.name}`
+    newNavCard.addEventListener('click',()=>{
+      location.href = item.link
+    })
+    navGroupEle.appendChild(newNavCard)
+  })
+}
+
 async function fillBasicInfo() {
-  const { author, hitokoto,avatar } = config
+  const { author, hitokoto, avatar } = config
   const authorNameEle = document.querySelector('#name')
   const hitokotoEle = document.querySelector('#Hitokoto')
   const avatarEle = document.querySelector('.avatar')
