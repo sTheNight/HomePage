@@ -1,4 +1,5 @@
 export default {
+    title: '重铬酸钠',
     avatar: 'https://avatars.githubusercontent.com/u/85998341?v=4',
     author: '重铬酸钠',
     // 此处填入 #HitokotoEnable# 会启用一言 API，否则会直接显示你定义的内容，一言 API 的 Get 参数请自行去 main.js 中修改（默认调用文学与哲学一言）
