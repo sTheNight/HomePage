@@ -1,6 +1,7 @@
-import './styles.less'
-import './left.less'
-import './right.less'
+import '../less/styles.less'
+import '../less/left.less'
+import '../less/right.less'
+import { debounce } from './utils.mts'
 import config from './config.mts'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
-window.addEventListener('resize', calcNavGroupWidth)
+window.addEventListener('resize', debounce(calcNavGroupWidth, 500))
 
 function calcNavGroupWidth() {
   const cardWidth = document.querySelector<HTMLDivElement>('.nav-card-div')!.offsetWidth

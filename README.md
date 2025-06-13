@@ -8,7 +8,7 @@
 
 ```shell
 npm install
-npm run build
+npm run build # or npx vite build
 ```
 
 ## 未来计划
