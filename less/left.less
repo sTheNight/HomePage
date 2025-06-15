@@ -28,12 +28,14 @@
     cursor: pointer;
     outline: 0;
     background-size: cover;
+
     &:hover,
     &:focus {
         transform: translate(8px, 0) scale(1.1);
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
         border-radius: 35%;
     }
+
     // 移动端适配
     @media @mobile-rule {
         width: @mobile-avatar-width;
@@ -85,6 +87,7 @@
     text-align: center;
     cursor: pointer;
     text-decoration: none;
+
     &:focus,
     &:hover {
         border-radius: 35%;
