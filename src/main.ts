@@ -15,7 +15,8 @@ window.addEventListener('resize', debounce(calcNavGroupWidth, 500))
 
 function calcNavGroupWidth(): void {
     const cardWidth = document.querySelector<HTMLDivElement>('.nav-card-div')?.offsetWidth
-    if (cardWidth) document.querySelector<HTMLDivElement>(".nav-group")!.style.maxWidth = `${(cardWidth * 3)}px`
+    const navGroupEl = document.querySelector<HTMLDivElement>(".nav-group")
+    if (cardWidth && navGroupEl) navGroupEl.style.maxWidth = `${(cardWidth * 3)}px`
 }
 
 async function fetchHitokoto(): Promise<string> {
