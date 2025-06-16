@@ -1,4 +1,6 @@
-export default {
+import type { IConfig } from "./IConfig.mts";
+
+export const config : IConfig = {
     title: 'Zako~',
     avatar: 'https://avatars.githubusercontent.com/u/85998341?v=4',
     author: '重铬酸钠',
