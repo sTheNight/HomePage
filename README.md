@@ -21,6 +21,6 @@ npm run build # or npx vite build
 
 ## 预览
 
-[Main 分支](https://home.za-ko.cn) | [Dev 分支](https://dev.homepage-5uk.pages.dev/)
+[Main 分支](https://za-ko.cn) | [Dev 分支](https://dev.homepage-5uk.pages.dev/)
 
 注：Dev 分支是否会与 Main 分支样式不同取决于 Dev 分支的提交是否优先于 Main 分支
