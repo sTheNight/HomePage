@@ -1,5 +1,5 @@
 export default {
-    title: '重铬酸钠',
+    title: 'Zako~',
     avatar: 'https://avatars.githubusercontent.com/u/85998341?v=4',
     author: '重铬酸钠',
     favicon: './favicon.ico',
