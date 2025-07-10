@@ -1,4 +1,7 @@
-export function debounce(recall: Function, waitTime: number) {
+export function debounce<T extends (...args: any[]) => any>(
+    recall: T,
+    waitTime: number
+): (...args: Parameters<T>) => void {
     let timer: number
     return function () {
         if (timer) clearTimeout(timer)
