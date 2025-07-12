@@ -1,0 +1,86 @@
+@mobile-rule: (max-width: 996px);
+@desktop-rule: (min-width: 997px);
+@desktop-padding: 128px;
+@mobile-padding: 32px;
+
+* {
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+body {
+    &::before {
+        content: "";
+        display: table;
+    }
+
+    box-sizing: border-box;
+    background: url(./background.png);
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+
+.background-overlay {
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.left-div {
+    box-sizing: border-box;
+
+    @media @desktop-rule {
+        padding-left: @desktop-padding;
+        width: 50%;
+        position: absolute;
+        left: 0;
+    }
+
+    @media @mobile-rule {
+        width: 100%;
+        margin-top: 128px;
+        padding: @mobile-padding;
+    }
+}
+
+.right-div {
+    box-sizing: border-box;
+    @media @desktop-rule {
+        position: absolute;
+        right: 0;
+        width: 50%;
+        padding-left: 64px;
+        overflow-y: auto;
+        max-height: 80%;
+    }
+
+    @media @mobile-rule {
+        width: 100%;
+        padding: 0 @mobile-padding;
+    }
+}
+
+.container {
+    display: flex;
+    @media @desktop-rule {
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    @media @mobile-rule {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
+    }
+}

@@ -1,5 +1,3 @@
-import type { IConfig } from "./IConfig.mts";
-
 export const config : IConfig = {
     title: 'Zako~',
     avatar: 'https://avatars.githubusercontent.com/u/85998341?v=4',
@@ -21,4 +19,26 @@ export const config : IConfig = {
         { name: '航天模拟器简中汉化包', link: 'https://github.com/sTheNight/Spaceflight-Simulator-CNlang' },
         { name: '我的个人主页', link: 'https://github.com/sTheNight/HomePage' }
     ]
+}
+
+interface IConfig {
+    title: string;
+    avatar: string;
+    author: string;
+    favicon: string;
+    hitokoto: string;
+    socialLinks: ISocialLink[];
+    navItems: INavItem[];
+}
+
+interface ISocialLink {
+    name: string;
+    icon: string;
+    link: string;
+    customIcon: boolean;
+}
+
+interface INavItem {
+    name: string;
+    link: string;
 }

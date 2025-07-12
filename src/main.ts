@@ -1,23 +1,14 @@
-import '../less/styles.less'
+import '../less/index.less'
 import '../less/left.less'
 import '../less/right.less'
-import { debounce } from './utils.mts'
 import { config } from './config.mts'
 
 document.addEventListener('DOMContentLoaded', () => {
-    fillBasicInfo();
+    fillBasicInfo()
     generateSocialButton()
     generateNavCard()
-    calcNavGroupWidth()
 })
 
-window.addEventListener('resize', debounce(calcNavGroupWidth, 500))
-
-function calcNavGroupWidth(): void {
-    const cardWidth = document.querySelector<HTMLDivElement>('.nav-card-div')?.offsetWidth
-    const navGroupEl = document.querySelector<HTMLDivElement>(".nav-group")
-    if (cardWidth && navGroupEl) navGroupEl.style.maxWidth = `${(cardWidth * 3)}px`
-}
 
 async function fetchHitokoto(): Promise<string> {
     const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')
@@ -39,6 +30,12 @@ function generateSocialButton(): void {
 
 function generateNavCard(): void {
     const { navItems } = config
+    const socialInfoDiv = document.querySelector<HTMLDivElement>(".left-div")
+    const navCardDiv = document.querySelector<HTMLDivElement>(".right-div")
+    if (navItems.length <= 0 && navCardDiv && socialInfoDiv && document.body.offsetWidth <= 996) {
+        navCardDiv.style.height = "0"
+        socialInfoDiv.style.margin = "0"
+    }
     const navGroupEle = document.querySelector<HTMLDivElement>('.nav-group')
     navItems.forEach(item => {
         const newNavCard: HTMLDivElement = document.createElement('div')
