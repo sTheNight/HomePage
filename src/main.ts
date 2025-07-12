@@ -30,8 +30,6 @@ function generateSocialButton(): void {
 
 function generateNavCard(): void {
     const { navItems } = config
-    const socialInfoDiv = document.querySelector<HTMLDivElement>(".left-div")
-    const navCardDiv = document.querySelector<HTMLDivElement>(".right-div")
     const navGroupEle = document.querySelector<HTMLDivElement>('.nav-group')
     navItems.forEach(item => {
         const newNavCard: HTMLDivElement = document.createElement('div')

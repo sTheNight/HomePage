@@ -8,13 +8,11 @@
 .left-formatting-corrections {}
 
 .avatar {
-    // 盒模型处理
     width: @desktop-avatar-width;
     height: @desktop-avatar-width;
     border-radius: 50%;
     border: 1px solid;
 
-    // 交互与样式处理
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     transition: all .3s;
     color: rgba(255, 255, 255, 0.25);
@@ -29,7 +27,6 @@
         border-radius: 35%;
     }
 
-    // 移动端适配
     @media @mobile-rule {
         width: @mobile-avatar-width;
         height: @mobile-avatar-width;
