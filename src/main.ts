@@ -1,23 +1,14 @@
-import '../less/styles.less'
+import '../less/index.less'
 import '../less/left.less'
 import '../less/right.less'
-import { debounce } from './utils.mts'
 import { config } from './config.mts'
 
 document.addEventListener('DOMContentLoaded', () => {
-    fillBasicInfo();
+    fillBasicInfo()
     generateSocialButton()
     generateNavCard()
-    calcNavGroupWidth()
 })
 
-window.addEventListener('resize', debounce(calcNavGroupWidth, 500))
-
-function calcNavGroupWidth(): void {
-    const cardWidth = document.querySelector<HTMLDivElement>('.nav-card-div')?.offsetWidth
-    const navGroupEl = document.querySelector<HTMLDivElement>(".nav-group")
-    if (cardWidth && navGroupEl) navGroupEl.style.maxWidth = `${(cardWidth * 3)}px`
-}
 
 async function fetchHitokoto(): Promise<string> {
     const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')

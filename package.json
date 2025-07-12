@@ -1,5 +1,5 @@
 {
-  "name": "homepage-ts",
+  "name": "homepage-v3",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^7.0.4"
   },
   "dependencies": {
     "less": "^4.3.0"

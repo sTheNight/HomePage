@@ -3,25 +3,16 @@
 @normal-blur-redius: 16px;
 @mobile-rule: (max-width: 996px);
 @desktop-rule: (min-width: 997px);
-@contact-div-width: 40%;
+@contact-max-div: 60%;
 
-.left-formatting-corrections {
-    // 文字排版修正
-    padding-left: 10px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-}
+.left-formatting-corrections {}
 
 .avatar {
-    // 头像排版位置修正
-    transform: translate(8px, 0);
-
-    // 盒模型处理
     width: @desktop-avatar-width;
     height: @desktop-avatar-width;
     border-radius: 50%;
     border: 1px solid;
 
-    // 交互与样式处理
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     transition: all .3s;
     color: rgba(255, 255, 255, 0.25);
@@ -36,7 +27,6 @@
         border-radius: 35%;
     }
 
-    // 移动端适配
     @media @mobile-rule {
         width: @mobile-avatar-width;
         height: @mobile-avatar-width;
@@ -62,9 +52,9 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
-    @media @desktop-rule {
-        max-width: @contact-div-width;
+    width: @contact-max-div;
+    @media @mobile-rule {
+        width: 100%;
     }
 }
 
@@ -100,10 +90,6 @@
 .divider {
     height: 1px;
     background-color: rgba(96, 96, 96, 0.75);
-    transform: translate(10px, 0);
     margin-top: 16px;
-
-    @media @desktop-rule {
-        width: @contact-div-width;
-    }
+    width: @contact-max-div;
 }
