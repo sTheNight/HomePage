@@ -32,10 +32,6 @@ function generateNavCard(): void {
     const { navItems } = config
     const socialInfoDiv = document.querySelector<HTMLDivElement>(".left-div")
     const navCardDiv = document.querySelector<HTMLDivElement>(".right-div")
-    if (navItems.length <= 0 && navCardDiv && socialInfoDiv && document.body.offsetWidth <= 996) {
-        navCardDiv.style.height = "0"
-        socialInfoDiv.style.margin = "0"
-    }
     const navGroupEle = document.querySelector<HTMLDivElement>('.nav-group')
     navItems.forEach(item => {
         const newNavCard: HTMLDivElement = document.createElement('div')

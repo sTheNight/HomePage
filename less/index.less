@@ -47,7 +47,6 @@ body {
 
     @media @mobile-rule {
         width: 100%;
-        margin-top: 128px;
         padding: @mobile-padding;
     }
 }
@@ -57,8 +56,8 @@ body {
     @media @desktop-rule {
         position: absolute;
         right: 0;
-        width: 50%;
-        padding-left: 64px;
+        max-width: 50%;
+        padding-right: @desktop-padding;
         overflow-y: auto;
         max-height: 80%;
     }
