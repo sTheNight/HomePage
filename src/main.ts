@@ -1,6 +1,6 @@
-import '../less/index.less'
-import '../less/left.less'
-import '../less/right.less'
+import '../scss/index.scss'
+import '../scss/left.scss'
+import '../scss/right.scss'
 import { config } from './config.mts'
 
 document.addEventListener('DOMContentLoaded', () => {

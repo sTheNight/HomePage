@@ -1,15 +1,13 @@
-@desktop-avatar-width: 120px;
-@mobile-avatar-width: 100px;
-@normal-blur-redius: 16px;
-@mobile-rule: (max-width: 996px);
-@desktop-rule: (min-width: 997px);
-@contact-max-div: 60%;
-
-.left-formatting-corrections {}
+$desktop-avatar-width: 120px;
+$mobile-avatar-width: 100px;
+$normal-blur-redius: 16px;
+$mobile-rule: "(max-width: 996px)";
+$desktop-rule: "(min-width: 997px)";
+$contact-max-div: 60%;
 
 .avatar {
-    width: @desktop-avatar-width;
-    height: @desktop-avatar-width;
+    width: $desktop-avatar-width;
+    height: $desktop-avatar-width;
     border-radius: 50%;
     border: 1px solid;
 
@@ -27,9 +25,9 @@
         border-radius: 35%;
     }
 
-    @media @mobile-rule {
-        width: @mobile-avatar-width;
-        height: @mobile-avatar-width;
+    @media #{$mobile-rule} {
+        width: $mobile-avatar-width;
+        height: $mobile-avatar-width;
     }
 }
 
@@ -38,13 +36,11 @@
     font-weight: 600;
     font-size: 1.3rem;
     user-select: none;
-    .left-formatting-corrections();
 }
 
 #Hitokoto {
     margin-top: 8px;
     user-select: none;
-    .left-formatting-corrections();
 }
 
 .contact {
@@ -52,8 +48,8 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    width: @contact-max-div;
-    @media @mobile-rule {
+    width: $contact-max-div;
+    @media #{$mobile-rule} {
         width: 100%;
     }
 }
@@ -68,7 +64,7 @@
     box-sizing: border-box;
 
     // 交互与样式处理
-    backdrop-filter: blur(@normal-blur-redius);
+    backdrop-filter: blur($normal-blur-redius);
     background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.3s;
     display: inline-flex;
@@ -91,5 +87,5 @@
     height: 1px;
     background-color: rgba(96, 96, 96, 0.75);
     margin-top: 16px;
-    width: @contact-max-div;
+    width: $contact-max-div;
 }

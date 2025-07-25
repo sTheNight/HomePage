@@ -1,5 +1,5 @@
-@mobile-rule: (max-width: 996px);
-@desktop-rule: (min-width: 997px);
+$mobile-rule: "(max-width: 996px)";
+$desktop-rule: "(min-width: 997px)";
 
 .nav-card-div {
     box-sizing: border-box;
@@ -39,7 +39,7 @@
     display: flex;
     flex-wrap: wrap;
 
-    @media @mobile-rule {
+    @media #{$mobile-rule} {
         width: 100% !important;
     }
 }
