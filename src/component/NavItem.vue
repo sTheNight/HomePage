@@ -1,6 +1,12 @@
-$mobile-rule: "(max-width: 996px)";
-$desktop-rule: "(min-width: 997px)";
+<script lang="ts" setup>
+defineProps(['name', 'link'])
+</script>
 
+<template>
+    <a class="nav-card-div" :href="link"><i class="fa-solid fa-link"></i>{{ name }}</a>
+</template>
+
+<style scoped>
 .nav-card-div {
     box-sizing: border-box;
     padding: 16px;
@@ -19,6 +25,8 @@ $desktop-rule: "(min-width: 997px)";
     cursor: pointer;
     transition: all .2s;
 
+    text-decoration: none;
+
     .fa-solid,
     .fa-brands {
         font-size: 14px;
@@ -33,13 +41,4 @@ $desktop-rule: "(min-width: 997px)";
         transform: scale(1.02);
     }
 }
-
-.nav-group {
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-
-    @media #{$mobile-rule} {
-        width: 100% !important;
-    }
-}
+</style>
