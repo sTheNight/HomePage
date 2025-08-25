@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { config } from './config';
 import NavItems from './component/NavItem.vue';
-import PersonalDescription from './component/PersonalDescription.vue';
-import NavGroup from './component/NavGroup.vue';
+import PersonalDescription from './views/PersonalDescription.vue';
+import NavGroup from './views/NavGroup.vue';
+
+document.title = config.title
 </script>
 
 <template>

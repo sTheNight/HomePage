@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { config } from '@/config';
 const { navItems } = config
-import NavItem from './NavItem.vue';
+import NavItem from '../component/NavItem.vue';
 </script>
 
 <template>

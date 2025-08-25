@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { config } from '@/config';
-import SocialButton from './SocialButton.vue'
-import Divider from './Divider.vue';
-import { onMounted, onUnmounted, ref, type Ref } from 'vue';
+import SocialButton from '../component/SocialButton.vue'
+import Divider from '../component/Divider.vue';
+import { onMounted, ref } from 'vue';
 
 let name = ref(config.author);
 let hitokoto = ref('Hitokoto is loading...')
@@ -14,6 +14,10 @@ onMounted(() => {
 
 async function fetchHitokoto(): Promise<void> {
     try {
+        if (config.hitokoto !== '#HitokotoEnable#') {
+            hitokoto.value = config.hitokoto;
+            return;
+        }
         const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')
         const hitokotoObj = await response.json()
         hitokoto.value = hitokotoObj.hitokoto ?? 'Could not load Hitokoto'
@@ -30,7 +34,8 @@ async function fetchHitokoto(): Promise<void> {
         <p id="Hitokoto">{{ hitokoto }}</p>
         <Divider />
         <div class="contact">
-            <SocialButton v-for="item in config.socialLinks" :icon="item.icon" :link="item.link" :key="item.link" />
+            <SocialButton v-for="item in config.socialLinks" :icon="item.icon" :link="item.link"
+                :is-custom-icon="item.customIcon" :key="item.link" />
         </div>
     </div>
 </template>
