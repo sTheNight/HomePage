@@ -39,6 +39,7 @@ defineProps(['name', 'link'])
         background-color: rgba(255, 255, 255, 0.25);
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
         transform: scale(1.02);
+        outline: 0;
     }
 }
 </style>
