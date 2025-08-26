@@ -7,6 +7,7 @@ import { onMounted, ref } from 'vue';
 let name = ref(config.author);
 let hitokoto = ref('Hitokoto is loading...')
 let avatarUrl = ref(config.avatar)
+let isHitokotoRefreshButtonShow = ref(false)
 
 onMounted(() => {
     fetchHitokoto()
@@ -21,7 +22,8 @@ async function fetchHitokoto(): Promise<void> {
         const response = await fetch('https://v1.hitokoto.cn?c=d&c=k')
         const hitokotoObj = await response.json()
         hitokoto.value = hitokotoObj.hitokoto ?? 'Could not load Hitokoto'
-    } catch {
+    } catch (e) {
+        console.log(e)
         hitokoto.value = 'Failed to load Hitokoto'
     }
 }
@@ -29,9 +31,17 @@ async function fetchHitokoto(): Promise<void> {
 
 <template>
     <div id="personal-description">
-        <div class="avatar" tabindex="0" :style="{ backgroundImage: `url(${avatarUrl})` }"></div>
+        <div class="avatar-wrapper" :style="{ '--avatar-url': `url(${avatarUrl})` }">
+            <div class="avatar" tabindex="0"></div>
+        </div>
         <p id="name">{{ name }}</p>
-        <p id="Hitokoto">{{ hitokoto }}</p>
+        <p id="Hitokoto" @mouseenter="isHitokotoRefreshButtonShow = true"
+            @mouseleave="isHitokotoRefreshButtonShow = false">{{ hitokoto }}
+            <Transition name="refresh">
+                <i v-if="isHitokotoRefreshButtonShow" class="fa-solid fa-rotate hitokoto-refresh-button"
+                    @click.stop="fetchHitokoto()"></i>
+            </Transition>
+        </p>
         <Divider />
         <div class="contact">
             <SocialButton v-for="item in config.socialLinks" :icon="item.icon" :link="item.link"
@@ -59,29 +69,59 @@ async function fetchHitokoto(): Promise<void> {
     }
 }
 
-.avatar {
+.avatar-wrapper {
     width: $desktop-avatar-width;
     height: $desktop-avatar-width;
-    border-radius: 50%;
-    border: 1px solid;
-
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    transition: all .3s;
-    color: rgba(255, 255, 255, 0.25);
+    position: relative;
     cursor: pointer;
     outline: 0;
-    background-size: cover;
-
-    &:hover,
-    &:focus {
-        transform: translate(8px, 0) scale(1.1);
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
-        border-radius: 35%;
-    }
 
     @media #{$mobile-rule} {
         width: $mobile-avatar-width;
         height: $mobile-avatar-width;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background-image: var(--avatar-url);
+        background-size: cover;
+        background-position: center;
+        filter: blur(16px);
+        border-radius: 50%;
+        transition: all .3s;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+        transform: translate(8px, 0) scale(1.1);
+        border-radius: 35%;
+        filter: blur(32px);
+    }
+}
+
+.avatar {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid;
+    background-size: cover;
+    background-position: center;
+    transition: all .3s;
+    outline: 0;
+    background-image: var(--avatar-url);
+
+    &:hover,
+    &:focus {
+        transform: translate(8px, 0) scale(1.1);
+        border-radius: 35%;
     }
 }
 
@@ -107,5 +147,28 @@ async function fetchHitokoto(): Promise<void> {
     @media #{$mobile-rule} {
         width: 100%;
     }
+}
+
+.hitokoto-refresh-button {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 4px;
+}
+</style>
+
+<style lang="scss">
+.refresh-enter-active,
+.refresh-leave-active {
+    transition: all 0.2s ease;
+}
+
+.refresh-enter-from,
+.refresh-leave-to {
+    opacity: 0;
+}
+
+.refresh-enter-to,
+.refresh-leave-from {
+    opacity: 1;
 }
 </style>
